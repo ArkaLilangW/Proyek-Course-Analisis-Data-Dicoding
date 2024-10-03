@@ -8,9 +8,10 @@ pip install -r requrement.txt
 ```
 streamlit run streamlit_app.py
 ```
-after that enter your email if asked./
+after that enter your email if asked.
 
 ## Streamlit APP that Already Deployed
 ```
 https://ads101.streamlit.app/
 ```
+
