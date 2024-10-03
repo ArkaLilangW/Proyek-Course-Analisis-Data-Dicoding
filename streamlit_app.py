@@ -24,11 +24,16 @@ def create_rata_rata_penyewa_df(df):
     rata_rata_penyewa_df['yr'] = rata_rata_penyewa_df['yr'].map(ganti_tahun)
     return rata_rata_penyewa_df[['yr', 'mnth', 'cnt_avg']]
 
+def ganti_musim(df):
+    ganti_value_season = {1:'spring', 2:'summer', 3:'fall', 4:'winter'}
+    df['season']= cek_sewa_musim_harian['season'].map(ganti_value_season)
+    return df
 
 df=pd.read_csv('day.csv')
 rata_rata_bulan=create_rata_rata_penyewa_df(df)
 rata_rata_bulan['tahun_bulan'] = rata_rata_bulan['mnth'] + " " + rata_rata_bulan['yr'].astype(str)
 cek_sewa_musim_harian=df.groupby('season')['cnt'].sum().reset_index()
+cek_sewa_musim_harian=ganti_musim(cek_sewa_musim_harian)
 mean_kerja = df[df['workingday'] == 1]['cnt'].mean()
 mean_libur = df[df['workingday'] == 0]['cnt'].mean()
 mean_total = pd.DataFrame({
