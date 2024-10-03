@@ -1,5 +1,16 @@
 # Proyek Course Data Analisis Menggunakan Python Dicoding
 
-Nama: Arka Lilang Wiratma \
-Email: arka.lilang.wiratma@mail.ugm.ac.id \
-ID Dicoding: Arka Lilang Wiratma 
+## Setup Environment Using Powershell
+'''
+pip install -r requrement.txt
+'''
+## Run Streamlit App
+'''
+streamlit run streamlit_app.py
+'''
+after that enter your email if asked./
+
+##Streamlit APP that Already Deployed
+'''
+https://ads101.streamlit.app/
+'''
