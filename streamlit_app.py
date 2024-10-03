@@ -28,8 +28,13 @@ def create_rata_rata_penyewa_df(df):
 df=pd.read_csv('day.csv')
 rata_rata_bulan=create_rata_rata_penyewa_df(df)
 rata_rata_bulan['tahun_bulan'] = rata_rata_bulan['mnth'] + " " + rata_rata_bulan['yr'].astype(str)
-cek_sewa_musim_harian=pd.read_csv('cek_sewa_musim_harian.csv')
-mean_total=pd.read_csv('mean_total.csv')
+cek_sewa_musim_harian=df.groupby('season')['cnt'].sum().reset_index()
+mean_kerja = df[df['workingday'] == 1]['cnt'].mean()
+mean_libur = df[df['workingday'] == 0]['cnt'].mean()
+mean_total = pd.DataFrame({
+    'workingday':['Kerja', 'Libur'], 
+    'sewa':[mean_kerja, mean_libur]
+})
 
 
 st.title("Data Penyewaan Sepeda")
